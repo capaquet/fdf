@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:39:50 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/09/19 12:13:04 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/09/26 17:14:33 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ static void			ft_check_char(t_data *data, char *line)
 	}
 }
 
+static void			ft_center(t_data *data, t_point point)
+{
+	if (point.z != 0)
+	{
+		data->center_rotation_x += point.x;
+		data->center_rotation_y += point.y;
+		data->nbr_pt_altitude += 1;
+	}
+}
+
 static void			ft_exploit_line(t_data *data, char *line, int y)
 {
 	int			index;
@@ -45,9 +55,11 @@ static void			ft_exploit_line(t_data *data, char *line, int y)
 	{
 		new_point.y = y;
 		new_point.z = ft_atoi(line_split[index++]);
+		data->nbr_z = new_point.z > data->nbr_z ? new_point.z : data->nbr_z;
 		if (!(new_list = ft_lstnew(&new_point, sizeof(t_point))))
 			ft_error(data, "Error system in ft_lstnew");
 		ft_lstaddend(&data->map, new_list);
+		ft_center(data, new_point);
 		new_point.x++;
 	}
 	if (data->nbr_x == 0)
@@ -89,6 +101,9 @@ int					ft_read_file(t_data *data)
 		ft_error(data, "Error data - File empty");
 	if (ret == -1)
 		ft_error(data, "Error system in GNL");
+	data->nbr_y = nbr_y;
+	data->nbr_pt_altitude != 0 ? data->center_rotation_x /= data->nbr_pt_altitude : 0;
+	data->nbr_pt_altitude != 0 ? data->center_rotation_y /= data->nbr_pt_altitude : 0;
 	reset_coord(data->map);
 	return (1);
 }

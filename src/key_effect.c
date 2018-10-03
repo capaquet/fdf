@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void		altitude(t_data *data)
+void		altitude(t_data *data, int key)
 {
 	t_list *map;
 
@@ -21,7 +21,7 @@ void		altitude(t_data *data)
 	{
 		if (((t_point*)map->content)->z != 0)
 		{
-			if (data->key == 81)
+			if (key == 81)
 			{
 				if (((t_point*)map->content)->z == -1)
 					((t_point*)map->content)->z += 2;
@@ -35,28 +35,31 @@ void		altitude(t_data *data)
 				else
 					((t_point*)map->content)->z -= 1;
 			}
-		}
+		 }
+		
 		map = map->next;
 	}
 }
 
-void		zoom(t_data *data)
+void		zoom(t_data *data, int key)
 {
-	if (data->key == 69)
-		data->size_image += 100;
+	float coef;
+
+	coef = (float)(SIZE_IMAGE / 40) / (data->nbr_y > data->nbr_x ? (float)data->nbr_y : (float)data->nbr_x);
+	if (key == 69)
+		data->coef += coef;
 	else
-		data->size_image -= 100;
-	data->size_image < 100 ? data->size_image = 100 : 0;
+		data->coef -= data->coef - coef > 0 ? coef : 0;
 }
 
-void		mouvement(t_data *data)
+void		mouvement(t_data *data, int key)
 {
-	if (data->key == 124)
+	if (key == 124)
 		data->move_x += 25;
-	else if (data->key == 123)
+	else if (key == 123)
 		data->move_x -= 25;
-	else if (data->key == 125)
+	else if (key == 125)
 		data->move_y += 25;
-	else if (data->key == 126)
+	else if (key == 126)
 		data->move_y -= 25;
 }
