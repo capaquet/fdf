@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <mlx.h>
+# include "X.h"
 # include <errno.h>
 # include <math.h>
 
@@ -37,12 +38,14 @@ typedef struct		s_data
 	int			move_x;
 	int			move_y;
 
-	float		center_rotation_x;
-	float		center_rotation_y;
-	float		nbr_pt_altitude;
+	float		center_rotat_x;
+	float		center_rotat_y;
+	float		nbr_altitude;
 
 	float		center_iso_x;
 	float		center_iso_y;
+	float		min_iso_y;
+	float		max_iso_y;
 
 	t_list		*map;
 
@@ -50,6 +53,9 @@ typedef struct		s_data
 	char		*image;
 	void		*mlx_ptr;
 	void		*win_ptr;
+	int 		endian;
+	int 		size;
+	int			bits_per_pixel;
 
 }					t_data;
 
@@ -67,6 +73,9 @@ typedef struct		s_point
 	float		iso_y;
 }					t_point;
 
+/*
+** Functions in get_data.c
+*/
 int					ft_read_file(t_data *data);
 
 /*
@@ -74,15 +83,33 @@ int					ft_read_file(t_data *data);
 */
 void				ft_error(t_data *data, char *msg);
 void				free_double_tab(char ***tab);
+float				modulo(float x);
+float				reverse_modulo(float x);
+void				ft_fabs(float *nbr);
 
+/*
+** Functions in key_effect.c
+*/
 void				altitude(t_data *data, int key);
 void				zoom(t_data *data, int key);
 void				rotate(t_data *data, int *key);
 void				mouvement(t_data *data, int key);
 void				quit(t_data *data);
 
+/*
+** Functions in isometric.c
+*/
 void				ft_isometric(t_data *data);
 void				ft_calcul_center_iso(t_data *data);
 
+/*
+** Functions in color.c
+*/
+int					ft_color(float y_min, float y_max, float y);
+
+/*
+** Functions in draw.c
+*/
 void				draw_fdf(t_data *data, t_list *map);
+void				ft_draw_line(t_data *data, t_point *point1, t_point *point2);
 #endif

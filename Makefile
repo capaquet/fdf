@@ -25,7 +25,9 @@ SRC_NAME =	main.c \
 			isometric.c \
 			rotate.c \
 			key_effect.c \
-			draw_line.c
+			select_points.c \
+			color.c \
+			draw.c
 
 OBJ_PATH =	objs
 OBJ_NAME =	$(SRC_NAME:.c=.o)
@@ -34,11 +36,12 @@ OBJ =		$(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 LIBFT_PATH =	libraries
 
 FLAGS_MINILIBX = -lmlx -framework OpenGL -framework AppKit
+INC = -I/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/X11/
 
 all: $(NAME)
 
 $(NAME): LIBFT $(OBJ)
-	@ $(CC) $(OBJ) $(CPPFLAG) -L$(LIBFT_PATH) -lft $(FLAGS_MINILIBX) -o $(NAME)
+	@ $(CC) $(OBJ) $(CPPFLAG) -L$(LIBFT_PATH) -lft $(FLAGS_MINILIBX) $(INC) -o $(NAME)
 	@ echo "\x1B[032m" "-= $(NAME) OK =-" "\x1B[0m"
 
 LIBFT:
@@ -46,7 +49,7 @@ LIBFT:
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@ mkdir -p $(OBJ_PATH)
-	@ $(CC) -c $(CFLAGS) $(CPPFLAG) $^ -o $@
+	@ $(CC) -c $(CFLAGS) $(INC) $(CPPFLAG) $^ -o $@
 
 clean:
 	@ rm -Rf $(OBJ_PATH)
