@@ -34,9 +34,9 @@ static void			ft_center(t_data *data, t_point point)
 {
 	if (point.z != 0)
 	{
-		data->center_rotation_x += point.x;
-		data->center_rotation_y += point.y;
-		data->nbr_pt_altitude += 1;
+		data->center_rotat_x += point.x;
+		data->center_rotat_y += point.y;
+		data->nbr_altitude += 1;
 	}
 }
 
@@ -95,15 +95,13 @@ int					ft_read_file(t_data *data)
 		ft_strdel(&line);
 		nbr_y++;
 	}
-//	if (line)
-//		ft_strdel(&line);
 	if (nbr_y == 0)
 		ft_error(data, "Error data - File empty");
 	if (ret == -1)
 		ft_error(data, "Error system in GNL");
 	data->nbr_y = nbr_y;
-	data->nbr_pt_altitude != 0 ? data->center_rotation_x /= data->nbr_pt_altitude : 0;
-	data->nbr_pt_altitude != 0 ? data->center_rotation_y /= data->nbr_pt_altitude : 0;
+	data->nbr_altitude != 0 ? data->center_rotat_x /= data->nbr_altitude : 0;
+	data->nbr_altitude != 0 ? data->center_rotat_y /= data->nbr_altitude : 0;
 	reset_coord(data->map);
 	return (1);
 }

@@ -20,7 +20,6 @@ static void				free_point(void *point, size_t size)
 
 static int				key(int key, t_data *data)
 {
-//	data->key = key;
 	printf("key dans main %d\n", key);
 	if (key == 12)
 		quit(data);
@@ -34,7 +33,6 @@ static int				key(int key, t_data *data)
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
 	ft_isometric(data);
 	draw_fdf(data, data->map);
-//	data->key = 0;
 	return (1);
 }
 
@@ -65,11 +63,13 @@ int						main(void)
 
 	errno = 0;
 	ft_bzero(&data, sizeof(t_data));
-
 	ft_read_file(&data);
-	data.coef = (float)(SIZE_IMAGE / 4) / (data.nbr_y > data.nbr_x ? (float)data.nbr_y : (float)data.nbr_x);
+	data.coef = (float)(SIZE_IMAGE / 4) / (data.nbr_y > data.nbr_x ?
+	(float)data.nbr_y : (float)data.nbr_x);
 	ft_calcul_center_iso(&data);
 	ft_window(&data);
+	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, key, &data);
+	mlx_do_key_autorepeaton(data.mlx_ptr);
 	mlx_key_hook(data.win_ptr, key, &data);
 	mlx_loop(data.mlx_ptr);
 	exit(EXIT_SUCCESS);

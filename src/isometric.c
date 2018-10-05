@@ -20,26 +20,28 @@ void				ft_isometric(t_data *data)
 	while (map)
 	{
 		((t_point*)map->content)->iso_x = (((t_point*)map->content)->new_x
-		 - ((t_point*)map->content)->new_y) * data->coef + data->move_x;
-		
-		 ((t_point*)map->content)->iso_y = ((((t_point*)map->content)->new_x
-		 + ((t_point*)map->content)->new_y - ((t_point*)map->content)->new_z)
-		 / 2) * data->coef + data->move_y;
-		 map = map->next;
+		- ((t_point*)map->content)->new_y) * data->coef;
+		((t_point*)map->content)->iso_y = ((((t_point*)map->content)->new_x
+		+ ((t_point*)map->content)->new_y - ((t_point*)map->content)->new_z)
+		/ 2) * data->coef;
+		data->min_iso_y > ((t_point*)map->content)->iso_y
+		? data->min_iso_y = ((t_point*)map->content)->iso_y : 0;
+		data->max_iso_y < ((t_point*)map->content)->iso_y
+		? data->max_iso_y = ((t_point*)map->content)->iso_y : 0;
+		map = map->next;
 	}
-
 }
 
 void				ft_calcul_center_iso(t_data *data)
 {
-		t_list	*map;
-		int		nbr;
+	t_list	*map;
+	int		nbr;
 
 	map = data->map;
 	nbr = 0;
 	while (map)
 	{
-		data->center_iso_x+= (((t_point*)map->content)->new_x
+		data->center_iso_x += (((t_point*)map->content)->new_x
 		- ((t_point*)map->content)->new_y);
 		data->center_iso_y += ((((t_point*)map->content)->new_x
 		+ ((t_point*)map->content)->new_y - ((t_point*)map->content)->new_z)

@@ -35,8 +35,7 @@ void		altitude(t_data *data, int key)
 				else
 					((t_point*)map->content)->z -= 1;
 			}
-		 }
-		
+		}
 		map = map->next;
 	}
 }
@@ -45,7 +44,8 @@ void		zoom(t_data *data, int key)
 {
 	float coef;
 
-	coef = (float)(SIZE_IMAGE / 40) / (data->nbr_y > data->nbr_x ? (float)data->nbr_y : (float)data->nbr_x);
+	coef = (float)(SIZE_IMAGE / 40) / (data->nbr_y > data->nbr_x
+	? (float)data->nbr_y : (float)data->nbr_x);
 	if (key == 69)
 		data->coef += coef;
 	else

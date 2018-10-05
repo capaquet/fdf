@@ -34,3 +34,19 @@ void		free_double_tab(char ***tab)
 	free(*tab);
 	*tab = NULL;
 }
+
+float		modulo(float x)
+{
+	return (x - (int)x);
+}
+
+float		reverse_modulo(float x)
+{
+	return (1 - modulo(x));
+}
+
+void		ft_fabs(float *nbr)
+{
+	if (*nbr < 0)
+		*nbr = -*nbr;
+}

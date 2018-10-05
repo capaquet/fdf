@@ -82,14 +82,14 @@ static void		copy_coord(t_list *point, float *new_coord, char code,
 {
 	if (code == 1)
 	{
-		new_coord[0] = ((t_point*)point->content)->x - data->center_rotation_x;
-		new_coord[1] = ((t_point*)point->content)->y - data->center_rotation_y;
+		new_coord[0] = ((t_point*)point->content)->x - data->center_rotat_x;
+		new_coord[1] = ((t_point*)point->content)->y - data->center_rotat_y;
 		new_coord[2] = ((t_point*)point->content)->z;
 	}
 	else if (code == 2)
 	{
-		((t_point*)point->content)->new_x = new_coord[0] + data->center_rotation_x;
-		((t_point*)point->content)->new_y = new_coord[1] + data->center_rotation_y;
+		((t_point*)point->content)->new_x = new_coord[0] + data->center_rotat_x;
+		((t_point*)point->content)->new_y = new_coord[1] + data->center_rotat_y;
 		((t_point*)point->content)->new_z = new_coord[2];
 	}
 }
