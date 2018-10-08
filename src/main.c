@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:28:06 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/09/27 17:38:19 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/08 17:35:09 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void				free_point(void *point, size_t size)
 
 static int				key(int key, t_data *data)
 {
-	printf("key dans main %d\n", key);
 	if (key == 12)
 		quit(data);
 	if (key == 81 || key == 75)
