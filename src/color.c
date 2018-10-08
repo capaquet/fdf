@@ -6,14 +6,14 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/10/08 17:16:30 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/08 17:32:02 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
-#define RED RGB[0]
-#define GREEN RGB[1]
-#define BLUE RGB[2]
+#define RED color_rgb[0]
+#define GREEN color_rgb[1]
+#define BLUE color_rgb[2]
 
 static unsigned char	ft_calcul_rgb(float lvl, unsigned char *full,
 												unsigned char *empty, char code)
@@ -36,7 +36,7 @@ int						ft_color(float y_min, float y_max, float y)
 	unsigned char	color_rgb[3];
 
 	lvl = (y - y_min) * 10 / (y_max - y_min);
-	ft_bzero(&RGB, sizeof(unsigned char) * 3);
+	ft_bzero(&color_rgb, sizeof(unsigned char) * 3);
 	if (lvl >= 0 && lvl < 1.5)
 		GREEN = ft_calcul_rgb(lvl / 1.5, &RED, &GREEN, 0);
 	else if (lvl >= 1.5 && lvl < 3)
@@ -46,12 +46,12 @@ int						ft_color(float y_min, float y_max, float y)
 	else if (lvl >= 4.5 && lvl < 6)
 		GREEN = ft_calcul_rgb((lvl - 4.5) / 1.5, &BLUE, &RED, 1);
 	else if (lvl >= 6 && lvl < 7.5)
-		RED = ft_calcul_rbg((lvl - 6) / 1.5, &BLUE, &GREEN, 0);
+		RED = ft_calcul_rgb((lvl - 6) / 1.5, &BLUE, &GREEN, 0);
 	else if (lvl >= 7.5 && lvl < 9)
 		BLUE = ft_calcul_rgb((lvl - 7.5) / 1.5, &RED, &GREEN, 1);
 	else
 	{
-		RED = ft_calcul_RGB((lvl - 4.5) / 1.5, &GREEN, &GREEN, 1);
+		RED = ft_calcul_rgb((lvl - 4.5) / 1.5, &GREEN, &GREEN, 1);
 		BLUE = 0;
 	}
 	color = (RED << 16) + (GREEN << 8) + BLUE;
