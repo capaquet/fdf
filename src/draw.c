@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/09/27 18:24:05 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/08 17:17:30 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ static void			ft_draw_point(t_data *data, int x, int y, float intens)
 
 	start_x = SIZE_IMAGE / 2 - (data->center_iso_x * data->coef);
 	start_y = SIZE_IMAGE / 2 - (data->center_iso_y * data->coef);
-	index = (start_y + y + data->move_y) * (4 * SIZE_IMAGE) + (start_x + x + data->move_x) * 4;
+	index = (start_y + y + data->move_y) * (4 * SIZE_IMAGE)
+	+ (start_x + x + data->move_x) * 4;
 	if (index < 0 || index >= SIZE_IMAGE * SIZE_IMAGE * 4
-	|| (start_x + x + data->move_x) >= SIZE_IMAGE || (start_x + x + data->move_x) < 0)
+	|| (start_x + x + data->move_x) >= SIZE_IMAGE
+	|| (start_x + x + data->move_x) < 0)
 		return ;
-    color = ft_color(data->min_iso_y, data->max_iso_y, y);
-    data->image[index] = (color & 0xFF);
+	color = ft_color(data->min_iso_y, data->max_iso_y, y);
+	data->image[index] = (color & 0xFF);
 	data->image[index + 1] = (color & 0xFF00) >> 8;
 	data->image[index + 2] = (color & 0xFF0000) >> 16;
 	data->image[index + 3] = 255 * intens;

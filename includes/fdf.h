@@ -6,12 +6,12 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:42:10 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/09/27 18:03:31 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/08 17:21:29 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
-#define FDF_H
+# define FDF_H
 
 # include <stdio.h>
 # include <mlx.h>
@@ -23,10 +23,10 @@
 # include "libft.h"
 # include "get_next_line.h"
 
-#define CHAR_OK		" -0123456789\n\0"
-#define SIZE_WIN	1200
-#define SIZE_IMAGE	1000
-#define PI			3.14159265358979323846 * 2
+# define CHAR_OK		" -0123456789\n\0"
+# define SIZE_WIN	1200
+# define SIZE_IMAGE	1000
+# define PI			3.14159265358979323846 * 2
 
 typedef struct		s_data
 {
@@ -53,8 +53,8 @@ typedef struct		s_data
 	char		*image;
 	void		*mlx_ptr;
 	void		*win_ptr;
-	int 		endian;
-	int 		size;
+	int			endian;
+	int			size;
 	int			bits_per_pixel;
 
 }					t_data;
@@ -111,5 +111,6 @@ int					ft_color(float y_min, float y_max, float y);
 ** Functions in draw.c
 */
 void				draw_fdf(t_data *data, t_list *map);
-void				ft_draw_line(t_data *data, t_point *point1, t_point *point2);
+void				ft_draw_line(t_data *data, t_point *point1,
+															t_point *point2);
 #endif
