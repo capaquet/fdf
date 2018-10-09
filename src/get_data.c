@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:39:50 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/09/26 17:14:33 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/08 17:48:02 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void			ft_check_char(t_data *data, char *line)
 {
-	int		index;
 	char	c;
+	int		index;
 
 	index = 0;
 	c = line[index];

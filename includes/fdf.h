@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:42:10 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/10/08 17:21:29 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/09 16:45:30 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@
 # include "X.h"
 # include <errno.h>
 # include <math.h>
-
-// A modifier apres l integration de la libft
 # include "libft.h"
 # include "get_next_line.h"
 
-# define CHAR_OK		" -0123456789\n\0"
-# define SIZE_WIN	1200
-# define SIZE_IMAGE	1000
-# define PI			3.14159265358979323846 * 2
+# define CHAR_OK		" -+0123456789\n\0"
+# define SIZE_WIN		1200
+# define SIZE_IMAGE		1000
+# define PI				3.14159265358979323846 * 2
 
 typedef struct		s_data
 {

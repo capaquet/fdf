@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/09/18 17:19:38 by cpaquet          ###   ########.fr        #
+#    Updated: 2018/10/09 16:46:02 by cpaquet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@
 NAME = fdf
 
 CC =		gcc
-CFLAGS =	-Wall -Wextra
-CPPFLAG =	-I./includes
+CFLAGS =	-Wall -Wextra -Werror
+CPPFLAG =	-I./includes -I./libraries/includes
 
 SRC_PATH = 	src
 SRC_NAME =	main.c \
