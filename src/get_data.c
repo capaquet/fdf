@@ -15,18 +15,18 @@
 static void			ft_check_char(t_data *data, char *line)
 {
 	char	c;
-	int		index;
+	int		ind;
 
-	index = 0;
-	c = line[index];
-	while (line[index])
+	ind = 0;
+	c = line[ind];
+	while (line[ind])
 	{
 		if (ft_strchr(CHAR_OK, c) == NULL)
 		{
 			ft_strdel(&line);
 			ft_error(data, "Error data : Wrong character");
 		}
-		c = line[++index];
+		c = line[++ind];
 	}
 }
 
@@ -42,19 +42,21 @@ static void			ft_center(t_data *data, t_point point)
 
 static void			ft_exploit_line(t_data *data, char *line, int y)
 {
-	int			index;
-	char		**line_split;
+	int			ind;
+	char		**split;
 	t_list		*new_list;
 	t_point		new_point;
 
-	index = 0;
+	ind = 0;
 	ft_bzero(&new_point, sizeof(t_point));
-	if (!(line_split = ft_split_whitespaces(line)))
+	if (!(split = ft_split_whitespaces(line)))
 		ft_error(data, "Error system in ft_split_whitespaces");
-	while (line_split[index])
+	while (split[ind])
 	{
 		new_point.y = y;
-		new_point.z = ft_atoi(line_split[index++]);
+		if (ft_strchr(split[ind] + 1, '+') || ft_strchr(split[ind] + 1, '-'))
+			ft_error(data, "Error input - Multiple sign for altitude");
+		new_point.z = ft_atoi(split[ind++]);
 		data->nbr_z = new_point.z > data->nbr_z ? new_point.z : data->nbr_z;
 		if (!(new_list = ft_lstnew(&new_point, sizeof(t_point))))
 			ft_error(data, "Error system in ft_lstnew");
@@ -62,11 +64,9 @@ static void			ft_exploit_line(t_data *data, char *line, int y)
 		ft_center(data, new_point);
 		new_point.x++;
 	}
-	if (data->nbr_x == 0)
-		data->nbr_x = new_point.x;
-	else if (data->nbr_x != new_point.x)
-		ft_error(data, "Error input - Line unequals");
-	free_double_tab(&line_split);
+	data->nbr_x = (data->nbr_x == 0 ? new_point.x : data->nbr_x);
+	data->nbr_x != new_point.x ? ft_error(data, "Error - Line unequals") : 0;
+	free_double_tab(&split);
 }
 
 static void			reset_coord(t_list *map)
