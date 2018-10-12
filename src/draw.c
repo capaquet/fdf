@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/10/08 17:17:30 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/12 16:15:01 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void			ft_draw_point(t_data *data, int x, int y, float intens)
 	int		start_x;
 	int		start_y;
 
+// PB pixel centre de l'image
 	start_x = SIZE_IMAGE / 2 - (data->center_iso_x * data->coef);
 	start_y = SIZE_IMAGE / 2 - (data->center_iso_y * data->coef);
 	index = (start_y + y + data->move_y) * (4 * SIZE_IMAGE)
