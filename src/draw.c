@@ -26,12 +26,11 @@ static void			ft_draw_point(t_data *data, int x, int y, float intens)
 	int		start_x;
 	int		start_y;
 
-// PB pixel centre de l'image
 	start_x = SIZE_IMAGE / 2 - (data->center_iso_x * data->coef);
 	start_y = SIZE_IMAGE / 2 - (data->center_iso_y * data->coef);
 	index = (start_y + y + data->move_y) * (4 * SIZE_IMAGE)
 	+ (start_x + x + data->move_x) * 4;
-	if (index < 0 || index >= SIZE_IMAGE * SIZE_IMAGE * 4
+	if (index <= 0 || index >= SIZE_IMAGE * SIZE_IMAGE * 4
 	|| (start_x + x + data->move_x) >= SIZE_IMAGE
 	|| (start_x + x + data->move_x) < 0)
 		return ;

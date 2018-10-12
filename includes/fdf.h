@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <mlx.h>
 # include "X.h"
+#include <fcntl.h>
 # include <errno.h>
 # include <math.h>
 # include "libft.h"
@@ -74,7 +75,7 @@ typedef struct		s_point
 /*
 ** Functions in get_data.c
 */
-int					ft_read_file(t_data *data);
+int					ft_read_file(t_data *data, char **file_name);
 
 /*
 ** Functions in tools.c

@@ -80,15 +80,18 @@ static void			reset_coord(t_list *map)
 	}
 }
 
-int					ft_read_file(t_data *data)
+int					ft_read_file(t_data *data, char **file_name)
 {
 	int			nbr_y;
 	int			ret;
+	int			fd;
 	char		*line;
 
 	nbr_y = 0;
 	line = NULL;
-	while ((ret = get_next_line(0, &line)) > 0)
+	if ((fd = open(file_name[1], O_RDONLY)) <= 0)
+		ft_error(data, "Error input - Read failed");
+	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		ft_check_char(data, line);
 		ft_exploit_line(data, line, nbr_y);

@@ -15,7 +15,8 @@
 static void				free_point(void *point, size_t size)
 {
 	size = 0;
-	free(point);
+	if (point)
+		free(point);
 }
 
 static int				key(int key, t_data *data)
@@ -51,25 +52,26 @@ void					quit(t_data *data)
 		mlx_clear_window(data->mlx_ptr, data->win_ptr);
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	}
-	if (data->map)
+	if (data->map != NULL)
 		ft_lstdel(&data->map, free_point);
 	exit(EXIT_SUCCESS);
 }
 
-int						main(void)
+int						main(int argc, char **argv)
 {
 	t_data	data;
 
 	errno = 0;
 	ft_bzero(&data, sizeof(t_data));
-	ft_read_file(&data);
+	if (argc != 2)
+		ft_error(&data, "Invalid parameter");
+	ft_read_file(&data, argv);
 	data.coef = (float)(SIZE_IMAGE / 4) / (data.nbr_y > data.nbr_x ?
 	(float)data.nbr_y : (float)data.nbr_x);
 	ft_calcul_center_iso(&data);
 	ft_window(&data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, key, &data);
 	mlx_do_key_autorepeaton(data.mlx_ptr);
-	mlx_key_hook(data.win_ptr, key, &data);
 	mlx_loop(data.mlx_ptr);
 	exit(EXIT_SUCCESS);
 }

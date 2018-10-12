@@ -17,6 +17,8 @@ void				ft_isometric(t_data *data)
 	t_list *map;
 
 	map = data->map;
+	data->min_iso_y = 0;
+	data->max_iso_y = 0;
 	while (map)
 	{
 		((t_point*)map->content)->iso_x = (((t_point*)map->content)->new_x
