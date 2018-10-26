@@ -104,7 +104,7 @@ void				ft_calcul_center_iso(t_data *data);
 /*
 ** Functions in color.c
 */
-int					ft_color(float y_min, float y_max, float y);
+int					ft_color(float z_min, float z_max, float tab[]);
 
 /*
 ** Functions in draw.c

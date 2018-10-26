@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/10/09 16:46:02 by cpaquet          ###   ########.fr        #
+#    Updated: 2018/10/24 12:40:13 by cpaquet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ SRC_PATH = 	src
 SRC_NAME =	main.c \
 			get_data.c \
 			tools.c \
-			isometric.c \
+			isometric2.c \
 			rotate.c \
 			key_effect.c \
 			select_points.c \
-			color.c \
-			draw.c
+			color2.c \
+			draw2.c
 
 OBJ_PATH =	objs
 OBJ_NAME =	$(SRC_NAME:.c=.o)
