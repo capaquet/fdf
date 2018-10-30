@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/10/24 13:50:59 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/30 14:56:01 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,13 @@ int						ft_color(float z_min, float z_max, float tab[])
 
 //	lvl_color = (y - y_min) * 10 / (y_max - y_min);
 
-	lvl = (Z + ((DELTA_Z / NBR_POINT) * COUNT_POINT * 10) / (z_max - z_min));
+
+	
+	lvl = (Z + (DELTA_Z * (COUNT_POINT / NBR_POINT)) * 10) / (z_max - z_min);
+printf("Z = %f    ", Z);
+
+	//printf("min = %f   max = %f\n", z_min, z_max);
+	//printf("level = %f    ", lvl);
 
 	ft_bzero(&color_rgb, sizeof(unsigned char) * 3);
 	if (lvl >= 0 && lvl < 1.5)
@@ -58,7 +64,7 @@ int						ft_color(float z_min, float z_max, float tab[])
 		BLUE = ft_calcul_rgb((lvl - 7.5) / 1.5, &RED, &GREEN, 1);
 	else
 	{
-		RED = ft_calcul_rgb((lvl - 4.5) / 1.5, &GREEN, &GREEN, 1);
+		RED = ft_calcul_rgb((lvl - 9) / 1.5, &GREEN, &GREEN, 1);
 		BLUE = 0;
 	}
 	color = (RED << 16) + (GREEN << 8) + BLUE;

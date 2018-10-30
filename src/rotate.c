@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 15:22:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/09/27 18:01:56 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/30 15:12:56 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void		rotate_x(float *new_coord, int *key)
 	double			tab[3];
 	static int		rotation_x = 0;
 
-	*key == 89 ? rotation_x++ : 0;
-	*key == 92 ? rotation_x-- : 0;
-	*key == 89 || *key == 92 ? *key = 0 : 0;
+	*key == 92 ? rotation_x++ : 0;
+	*key == 89 ? rotation_x-- : 0;
+	*key == 92 || *key == 89 ? *key = 0 : 0;
 	ft_bzero(&tab, sizeof(tab));
 	rotation_x = rotation_x == 181 ? 1 : rotation_x;
 	rotation_x = rotation_x == -1 ? 179 : rotation_x;

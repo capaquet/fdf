@@ -1,4 +1,0 @@
-bouton reset
-couleur en fonction de l'altitude
-Modifier mon atoi pour fdf ?!
-rotation camera ?

@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:42:10 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/10/09 16:45:30 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/30 14:59:46 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void				ft_calcul_center_iso(t_data *data);
 /*
 ** Functions in color.c
 */
-int					ft_color(float z_min, float z_max, float tab[]);
+int					ft_color(float z_min, float z_max, float y);
 
 /*
 ** Functions in draw.c

@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/10/24 13:53:33 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/10/30 14:57:41 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,21 @@ void				ft_draw_line(t_data *data, t_point *point1, t_point *point2)
 	Y = point1->iso_y;
 
 	Z = point2->z > point1->z ? point2->z : point1->z;
+
 COUNT_POINT = 1;
+
 	DELTA_X = point2->iso_x - point1->iso_x;
 	DELTA_Y = point2->iso_y - point1->iso_y;
+
 DELTA_Z = point2->z - point1->z;
-	MOVE_X = (DELTA_X > 0) ? 1 : -1;
+MOVE_X = (DELTA_X > 0) ? 1 : -1;
 	MOVE_Y = (DELTA_Y > 0) ? 1 : -1;
-MOVE_Z = (DELTA_Z > 0) ? 1 : -1;
+	MOVE_Z = (DELTA_Z > 0) ? 1 : -1;
+
 	ft_fabs(&DELTA_X);
 	ft_fabs(&DELTA_Y);
 ft_fabs(&DELTA_Z);
+ft_fabs(&Z);
 
 	NBR_POINT = DELTA_X + DELTA_Y;
 	ft_draw_point(data, X, Y, 0, tab);
