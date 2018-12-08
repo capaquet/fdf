@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:42:10 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/10/30 14:59:46 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/12/07 15:15:54 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <mlx.h>
 # include "X.h"
-#include <fcntl.h>
+# include <fcntl.h>
 # include <errno.h>
 # include <math.h>
 # include "libft.h"
@@ -29,6 +29,8 @@
 
 typedef struct		s_data
 {
+	t_list		*map;
+
 	int			nbr_x;
 	int			nbr_y;
 	int			nbr_z;
@@ -40,17 +42,22 @@ typedef struct		s_data
 	float		center_rotat_x;
 	float		center_rotat_y;
 	float		nbr_altitude;
-
+// Data for isomeric
 	float		center_iso_x;
 	float		center_iso_y;
 	float		min_iso_y;
 	float		max_iso_y;
 
-	t_list		*map;
+// Data for parallel
+	float		center_p_x;
+	float		center_p_y;
+	float		min_p_y;
+	float		max_p_y;
 
+// Data for window and image
+	void		*mlx_ptr;
 	void		*img_ptr;
 	char		*image;
-	void		*mlx_ptr;
 	void		*win_ptr;
 	int			endian;
 	int			size;
@@ -70,6 +77,8 @@ typedef struct		s_point
 
 	float		iso_x;
 	float		iso_y;
+	float		p_x;
+	float		p_y;
 }					t_point;
 
 /*
@@ -99,7 +108,9 @@ void				quit(t_data *data);
 ** Functions in isometric.c
 */
 void				ft_isometric(t_data *data);
+void				ft_parallel(t_data *data);
 void				ft_calcul_center_iso(t_data *data);
+void				ft_calcul_center_p(t_data *data);
 
 /*
 ** Functions in color.c
@@ -110,6 +121,9 @@ int					ft_color(float z_min, float z_max, float y);
 ** Functions in draw.c
 */
 void				draw_fdf(t_data *data, t_list *map);
+void				draw_fdf_p(t_data *data, t_list *map);
 void				ft_draw_line(t_data *data, t_point *point1,
+															t_point *point2);
+void				ft_draw_line_p(t_data *data, t_point *point1,
 															t_point *point2);
 #endif

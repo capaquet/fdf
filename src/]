@@ -6,12 +6,11 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:28:06 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/12/07 15:19:23 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/12/07 13:37:33 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 static void				free_point(void *point, size_t size)
 {
@@ -22,9 +21,7 @@ static void				free_point(void *point, size_t size)
 
 static int				key(int key, t_data *data)
 {
-	static int proj = 0;
-
-	if (key == 53)
+	if (key == 12)
 		quit(data);
 	if (key == 81 || key == 75)
 		altitude(data, key);
@@ -34,18 +31,11 @@ static int				key(int key, t_data *data)
 		mouvement(data, key);
 	rotate(data, &key);
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	if (key == 35)
-		proj =  proj == 0 ? 1 : 0;
-	if (proj == 0)
-	{
-		ft_isometric(data);
-		draw_fdf(data, data->map);
-	}
-	else
-	{
-		ft_parallel(data);
-		draw_fdf_p(data, data->map);
-	}
+	mlx_clear_window(data->mlx_ptr, data->win_p_ptr);
+	ft_isometric(data);
+	ft_parallel(data);
+	draw_fdf(data, data->map);
+	draw_fdf_p(data, data->map);
 	return (1);
 }
 
@@ -54,8 +44,15 @@ static void				ft_window(t_data *data)
 	if (!(data->mlx_ptr = mlx_init()))
 		ft_error(data, "Error system in mlx_init");
 	if (!(data->win_ptr =
-	mlx_new_window(data->mlx_ptr, SIZE_WIN, SIZE_WIN, "FDF")))
+	mlx_new_window(data->mlx_ptr, SIZE_WIN, SIZE_WIN, "Isometric")))
 		ft_error(data, "Error system in new_window");
+
+	if (!(data->mlx_ptr = mlx_init()))
+		ft_error(data, "Error system in mlx_init");
+	if (!(data->win_p_ptr =
+	mlx_new_window(data->mlx_p_ptr, SIZE_WIN, SIZE_WIN, "Parallel")))
+		ft_error(data, "Error system in new_window");
+
 }
 
 void					quit(t_data *data)
@@ -84,8 +81,13 @@ int						main(int argc, char **argv)
 	ft_calcul_center_iso(&data);
 	ft_calcul_center_p(&data);
 	ft_window(&data);
+
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, key, &data);
 	mlx_do_key_autorepeaton(data.mlx_ptr);
+
+	mlx_hook(data.win_p_ptr, KeyPress, KeyPressMask, key, &data);
+	mlx_do_key_autorepeaton(data.mlx_p_ptr);
+
 	mlx_loop(data.mlx_ptr);
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/10/30 14:59:17 by cpaquet          ###   ########.fr        #
+#    Updated: 2018/12/07 11:42:34 by cpaquet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC_NAME =	main.c \
 			key_effect.c \
 			select_points.c \
 			color.c \
-			draw.c
+			draw.c \
+			draw_p.c
 
 OBJ_PATH =	objs
 OBJ_NAME =	$(SRC_NAME:.c=.o)

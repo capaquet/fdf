@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 11:01:48 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/09/27 18:17:20 by cpaquet          ###   ########.fr       */
+/*   Updated: 2018/12/07 15:18:11 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,44 @@ void				ft_calcul_center_iso(t_data *data)
 	}
 	nbr != 0 ? data->center_iso_x /= nbr : 0;
 	nbr != 0 ? data->center_iso_y /= nbr : 0;
+}
+
+void				ft_parallel(t_data *data)
+{
+	t_list *map;
+
+	map = data->map;
+	data->min_p_y = 0;
+	data->max_p_y = 0;
+	while (map)
+	{
+		((t_point*)map->content)->p_x = ((t_point*)map->content)->new_x *
+		data->coef;
+		((t_point*)map->content)->p_y = (((t_point*)map->content)->new_y
+		- ((t_point*)map->content)->new_z) / 2 * data->coef;
+		data->min_p_y > ((t_point*)map->content)->p_y
+		? data->min_p_y = ((t_point*)map->content)->p_y : 0;
+		data->max_p_y < ((t_point*)map->content)->p_y
+		? data->max_p_y = ((t_point*)map->content)->p_y : 0;
+		map = map->next;
+	}
+}
+
+void				ft_calcul_center_p(t_data *data)
+{
+	t_list	*map;
+	int		nbr;
+
+	map = data->map;
+	nbr = 0;
+	while (map)
+	{
+		data->center_p_x += ((t_point*)map->content)->new_x;
+		data->center_p_y += (((t_point*)map->content)->new_y - 
+		((t_point*)map->content)->new_z) + data->move_y;
+		nbr++;
+		map = map->next;
+	}
+	nbr != 0 ? data->center_p_x /= nbr : 0;
+	nbr != 0 ? data->center_p_y /= nbr : 0;
 }
