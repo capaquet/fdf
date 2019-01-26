@@ -6,13 +6,11 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/12/07 15:12:52 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/01/26 15:59:28 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
-
-#include <stdio.h>
 
 static t_list		*select_points(int nbr_x, t_list *point1)
 {
@@ -31,9 +29,9 @@ static void			image(t_data *data)
 {
 	if (data->img_ptr)
 		mlx_destroy_image(data->mlx_ptr, data->img_ptr);
-		data->img_ptr = mlx_new_image(data->mlx_ptr, SIZE_IMAGE, SIZE_IMAGE);
-		data->image = mlx_get_data_addr(data->img_ptr, &data->bits_per_pixel,
-		&data->size, &data->endian);
+	data->img_ptr = mlx_new_image(data->mlx_ptr, SIZE_IMAGE, SIZE_IMAGE);
+	data->image = mlx_get_data_addr(data->img_ptr, &data->bits_per_pixel,
+	&data->size, &data->endian);
 }
 
 void				draw_fdf(t_data *data, t_list *map)

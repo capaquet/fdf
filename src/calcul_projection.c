@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 11:01:48 by cpaquet           #+#    #+#             */
-/*   Updated: 2019/01/26 13:22:51 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/01/26 15:45:32 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void				ft_calcul_center_p(t_data *data)
 	while (map)
 	{
 		data->center_p_x += ((t_point*)map->content)->new_x;
-		data->center_p_y += (((t_point*)map->content)->new_y - 
+		data->center_p_y += (((t_point*)map->content)->new_y -
 		((t_point*)map->content)->new_z) + data->move_y;
 		nbr++;
 		map = map->next;
