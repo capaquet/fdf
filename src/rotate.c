@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 15:22:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/10/30 15:12:56 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/01/26 14:36:51 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void		rotate_x(float *new_coord, int *key)
 	double			tab[3];
 	static int		rotation_x = 0;
 
-	*key == 92 ? rotation_x++ : 0;
-	*key == 89 ? rotation_x-- : 0;
-	*key == 92 || *key == 89 ? *key = 0 : 0;
+	*key == 91 ? rotation_x++ : 0;
+	*key == 84 ? rotation_x-- : 0;
+	*key == 91 || *key == 84 ? *key = 0 : 0;
 	ft_bzero(&tab, sizeof(tab));
 	rotation_x = rotation_x == 181 ? 1 : rotation_x;
 	rotation_x = rotation_x == -1 ? 179 : rotation_x;
@@ -40,9 +40,9 @@ static void		rotate_y(float *new_coord, int *key)
 	double			tab[3];
 	static int		rotation_y = 0;
 
-	*key == 84 ? rotation_y++ : 0;
-	*key == 91 ? rotation_y-- : 0;
-	*key == 84 || *key == 91 ? *key = 0 : 0;
+	*key == 88 ? rotation_y++ : 0;
+	*key == 86 ? rotation_y-- : 0;
+	*key == 88 || *key == 86 ? *key = 0 : 0;
 	ft_bzero(&tab, sizeof(tab));
 	rotation_y = rotation_y == 181 ? 1 : rotation_y;
 	rotation_y = rotation_y == -1 ? 179 : rotation_y;
@@ -61,9 +61,9 @@ static void		rotate_z(float *new_coord, int *key)
 	float			tab[3];
 	static int		rotation_z = 0;
 
-	*key == 86 ? rotation_z++ : 0;
-	*key == 88 ? rotation_z-- : 0;
-	*key == 86 || *key == 88 ? *key = 0 : 0;
+	*key == 92 ? rotation_z++ : 0;
+	*key == 89 ? rotation_z-- : 0;
+	*key == 92 || *key == 89 ? *key = 0 : 0;
 	ft_bzero(&tab, sizeof(tab));
 	rotation_z = rotation_z == 181 ? 1 : rotation_z;
 	rotation_z = rotation_z == -1 ? 179 : rotation_z;

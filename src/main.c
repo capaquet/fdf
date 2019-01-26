@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:28:06 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/12/07 15:19:23 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/01/26 14:50:52 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void				free_point(void *point, size_t size)
 	if (point)
 		free(point);
 }
-
+// ajouter bouton reset en 71
 static int				key(int key, t_data *data)
 {
 	static int proj = 0;
@@ -34,7 +34,7 @@ static int				key(int key, t_data *data)
 		mouvement(data, key);
 	rotate(data, &key);
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	if (key == 35)
+	if (key == 87)
 		proj =  proj == 0 ? 1 : 0;
 	if (proj == 0)
 	{

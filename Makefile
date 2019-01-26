@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/12/07 11:42:34 by cpaquet          ###   ########.fr        #
+#    Updated: 2019/01/26 14:28:58 by cpaquet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@
 NAME = fdf
 
 CC =		gcc
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS =
 CPPFLAG =	-I./includes -I./libraries/includes
 
 SRC_PATH = 	src
 SRC_NAME =	main.c \
 			get_data.c \
 			tools.c \
-			isometric.c \
+			calcul_projection.c \
 			rotate.c \
 			key_effect.c \
 			select_points.c \

@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/12/07 16:02:27 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/01/26 14:21:34 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,21 @@ static void			ft_line_x(t_data *data, float tab[])
 			CUMUL -= DELTA_X;
 			Y += MOVE_Y;
 		}
-		ft_draw_point(data, X, Y, modulo(Y));
-		ft_draw_point(data, X, Y + MOVE_Y, reverse_modulo(Y));
+		ft_draw_point(data, X, Y, 0);
+//		ft_draw_point(data, X, Y, modulo(CUMUL));
+//		ft_draw_point(data, X + MOVE_Y, Y, reverse_modulo(CUMUL));
 		i++;
 	}
 }
 
+/*
+ * Delta X = la difference de X entre le point1 et le point2.
+ * Delta Y = la difference de Y entre le point1 et le point2.
+ * MOVE_X = 1 si la DELTA_X est positive, cad, si le point1 est plus haut que le point2
+ * MOVE_Y = 1 si la DELTA_Y est positive, cad, si le point1 est plus a a droite que le point2
+ * les 4 combinaisons de MOVE indiquent donc les 4 directions
+ *
+*/
 static void			ft_line_y(t_data *data, float tab[])
 {
 	float i;
@@ -77,8 +86,9 @@ static void			ft_line_y(t_data *data, float tab[])
 			CUMUL -= DELTA_Y;
 			X += MOVE_X;
 		}
-		ft_draw_point(data, X, Y, modulo(X));
-		ft_draw_point(data, X + MOVE_X, Y, reverse_modulo(X));
+		ft_draw_point(data, X, Y, 0);
+//		ft_draw_point(data, X, Y, modulo(CUMUL));
+//		ft_draw_point(data, X + MOVE_X, Y, reverse_modulo(CUMUL));
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/12/07 15:04:11 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/01/26 14:23:03 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 #define CUMUL	tab[4]
 #define X		tab[5]
 #define Y		tab[6]
-
-
-#include <stdio.h>
 
 static void			ft_draw_point_p(t_data *data, int x, int y, float intens)
 {
@@ -59,8 +56,8 @@ static void			ft_line_p_x(t_data *data, float tab[])
 			CUMUL -= DELTA_X;
 			Y += MOVE_Y;
 		}
-		ft_draw_point_p(data, X, Y, modulo(Y));
-		ft_draw_point_p(data, X, Y + MOVE_Y, reverse_modulo(Y));
+		ft_draw_point_p(data, X, Y, 0);
+//		ft_draw_point_p(data, X, Y + MOVE_Y, reverse_modulo(Y));
 		i++;
 	}
 }
@@ -80,8 +77,8 @@ static void			ft_line_p_y(t_data *data, float tab[])
 			CUMUL -= DELTA_Y;
 			X += MOVE_X;
 		}
-		ft_draw_point_p(data, X, Y, modulo(Y));
-		ft_draw_point_p(data, X + MOVE_X, Y, reverse_modulo(Y));
+		ft_draw_point_p(data, X, Y, 0);
+//		ft_draw_point_p(data, X + MOVE_X, Y, reverse_modulo(Y));
 		i++;
 	}
 }
