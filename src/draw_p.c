@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2019/07/30 18:34:21 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/07/30 19:22:19 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define X		tab[5]
 #define Y		tab[6]
 
-static void			ft_draw_point_p(t_data *data, int x, int y, float intens)
+static void		ft_draw_point_p(t_data *data, int x, int y, float intens)
 {
 	int		index;
 	int		color;
@@ -41,14 +41,23 @@ static void			ft_draw_point_p(t_data *data, int x, int y, float intens)
 	data->image[index + 3] = 255 * intens;
 }
 
-static void			ft_line_p_x(t_data *data, float tab[])
+/*
+** Delta X = la difference de X entre le point1 et le point2.
+** Delta Y = la difference de Y entre le point1 et le point2.
+** MOVE_X = 1 si la DELTA_X est positive, cad, si le point1 est plus haut que
+** le point2
+** MOVE_Y = 1 si la DELTA_Y est positive, cad, si le point1 est plus a a droite
+** que le point2
+** les 4 combinaisons de MOVE indiquent donc les 4 directions
+*/
+
+static void		ft_line_p_x(t_data *data, float tab[])
 {
 	float i;
 
 	i = 1;
 	CUMUL = DELTA_X / 2;
 	while (i <= DELTA_X)
-	
 	{
 		X += MOVE_X;
 		CUMUL += DELTA_Y;
@@ -63,9 +72,10 @@ static void			ft_line_p_x(t_data *data, float tab[])
 	}
 }
 
-static void			ft_line_p_y(t_data *data, float tab[])
+static void		ft_line_p_y(t_data *data, float tab[])
 {
 	float i;
+
 	i = 1;
 	CUMUL = DELTA_Y / 2;
 	while (i <= DELTA_Y)
@@ -83,7 +93,7 @@ static void			ft_line_p_y(t_data *data, float tab[])
 	}
 }
 
-void				ft_draw_line_p(t_data *data, t_point *point1, t_point *point2)
+void			ft_draw_line_p(t_data *data, t_point *point1, t_point *point2)
 {
 	float	tab[7];
 
@@ -96,10 +106,9 @@ void				ft_draw_line_p(t_data *data, t_point *point1, t_point *point2)
 	MOVE_Y = (DELTA_Y > 0) ? 1 : -1;
 	ft_fabs(&DELTA_X);
 	ft_fabs(&DELTA_Y);
-	//ft_draw_point_p(data, X, Y,(DELTA_X > DELTA_Y)
+	ft_draw_point_p(data, X, Y, 0);
 	if (DELTA_X > DELTA_Y)
 		ft_line_p_x(data, tab);
 	else
 		ft_line_p_y(data, tab);
-
 }

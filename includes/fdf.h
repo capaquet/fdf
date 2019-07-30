@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:42:10 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/12/07 15:15:54 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/07/30 18:59:26 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,17 @@ typedef struct		s_data
 	float		center_rotat_x;
 	float		center_rotat_y;
 	float		nbr_altitude;
-// Data for isomeric
+
 	float		center_iso_x;
 	float		center_iso_y;
 	float		min_iso_y;
 	float		max_iso_y;
 
-// Data for parallel
 	float		center_p_x;
 	float		center_p_y;
 	float		min_p_y;
 	float		max_p_y;
 
-// Data for window and image
 	void		*mlx_ptr;
 	void		*img_ptr;
 	char		*image;
