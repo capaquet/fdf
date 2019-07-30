@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 09:15:22 by cpaquet           #+#    #+#             */
-/*   Updated: 2019/01/26 14:23:03 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/07/30 18:34:21 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void			ft_line_p_x(t_data *data, float tab[])
 	i = 1;
 	CUMUL = DELTA_X / 2;
 	while (i <= DELTA_X)
+	
 	{
 		X += MOVE_X;
 		CUMUL += DELTA_Y;
@@ -56,8 +57,8 @@ static void			ft_line_p_x(t_data *data, float tab[])
 			CUMUL -= DELTA_X;
 			Y += MOVE_Y;
 		}
-		ft_draw_point_p(data, X, Y, 0);
-//		ft_draw_point_p(data, X, Y + MOVE_Y, reverse_modulo(Y));
+		ft_draw_point_p(data, X, Y, reverse_modulo(Y));
+		ft_draw_point_p(data, X, Y + MOVE_Y, modulo(Y));
 		i++;
 	}
 }
@@ -65,7 +66,6 @@ static void			ft_line_p_x(t_data *data, float tab[])
 static void			ft_line_p_y(t_data *data, float tab[])
 {
 	float i;
-
 	i = 1;
 	CUMUL = DELTA_Y / 2;
 	while (i <= DELTA_Y)
@@ -77,8 +77,8 @@ static void			ft_line_p_y(t_data *data, float tab[])
 			CUMUL -= DELTA_Y;
 			X += MOVE_X;
 		}
-		ft_draw_point_p(data, X, Y, 0);
-//		ft_draw_point_p(data, X + MOVE_X, Y, reverse_modulo(Y));
+		ft_draw_point_p(data, X, Y, reverse_modulo(Y));
+		ft_draw_point_p(data, X + MOVE_X, Y, modulo(Y));
 		i++;
 	}
 }
@@ -96,7 +96,7 @@ void				ft_draw_line_p(t_data *data, t_point *point1, t_point *point2)
 	MOVE_Y = (DELTA_Y > 0) ? 1 : -1;
 	ft_fabs(&DELTA_X);
 	ft_fabs(&DELTA_Y);
-	ft_draw_point_p(data, X, Y, 0);
+	//ft_draw_point_p(data, X, Y,(DELTA_X > DELTA_Y)
 	if (DELTA_X > DELTA_Y)
 		ft_line_p_x(data, tab);
 	else

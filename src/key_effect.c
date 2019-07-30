@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 16:37:08 by cpaquet           #+#    #+#             */
-/*   Updated: 2018/09/19 12:06:46 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/07/30 18:23:42 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		zoom(t_data *data, int key)
 {
 	float coef;
 
-	coef = (float)(SIZE_IMAGE / 40) / (data->nbr_y > data->nbr_x
+	coef = (float)(SIZE_IMAGE / 50) / (data->nbr_y > data->nbr_x
 	? (float)data->nbr_y : (float)data->nbr_x);
 	if (key == 69)
 		data->coef += coef;
