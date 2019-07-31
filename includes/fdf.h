@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:42:10 by cpaquet           #+#    #+#             */
-/*   Updated: 2019/07/30 18:59:26 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/07/31 14:00:32 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define SIZE_WIN		1200
 # define SIZE_IMAGE		1000
 # define PI				3.14159265358979323846 * 2
+# define CSTE			0.5
 
 typedef struct		s_data
 {
@@ -34,7 +35,7 @@ typedef struct		s_data
 	int			nbr_x;
 	int			nbr_y;
 	int			nbr_z;
-	float		coef;
+	double		coef;
 
 	int			move_x;
 	int			move_y;

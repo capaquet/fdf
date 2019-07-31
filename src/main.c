@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:28:06 by cpaquet           #+#    #+#             */
-/*   Updated: 2019/01/26 15:45:16 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/07/31 11:34:54 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ static int				key(int key, t_data *data)
 	{
 		ft_isometric(data);
 		draw_fdf(data, data->map);
+		printf("COUCOU JE SUIS UNE PROJECTION ISOMETRIQUE LOL !!!!\n");
 	}
 	else
 	{
 		ft_parallel(data);
 		draw_fdf_p(data, data->map);
+		printf("COUCOU JE SUIS UNE PERSPECTIVE !!!!\n");
 	}
 	return (1);
 }
@@ -85,7 +87,7 @@ int						main(int argc, char **argv)
 	ft_calcul_center_p(&data);
 	ft_window(&data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, key, &data);
-	mlx_do_key_autorepeaton(data.mlx_ptr);
+//	mlx_do_key_autorepeaton(data.mlx_ptr);
 	mlx_loop(data.mlx_ptr);
 	exit(EXIT_SUCCESS);
 }

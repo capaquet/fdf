@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2019/01/26 15:58:45 by cpaquet          ###   ########.fr        #
+#    Updated: 2019/07/31 11:06:03 by cpaquet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@
 NAME = fdf
 
 CC =		gcc
-CFLAGS = -Wall -Wextra -Werror
 CPPFLAG =	-I./includes -I./libraries/includes
 
 SRC_PATH = 	src

@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 11:01:48 by cpaquet           #+#    #+#             */
-/*   Updated: 2019/01/26 15:45:32 by cpaquet          ###   ########.fr       */
+/*   Updated: 2019/07/31 13:50:12 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,18 @@ void				ft_isometric(t_data *data)
 	data->max_iso_y = 0;
 	while (map)
 	{
-		((t_point*)map->content)->iso_x = (((t_point*)map->content)->new_x
-		- ((t_point*)map->content)->new_y) * data->coef;
-		((t_point*)map->content)->iso_y = ((((t_point*)map->content)->new_x
-		+ ((t_point*)map->content)->new_y - ((t_point*)map->content)->new_z)
-		/ 2) * data->coef;
+		((t_point*)map->content)->iso_x = (((t_point*)map->content)->new_x * CSTE
+		- ((t_point*)map->content)->new_y * CSTE) * data->coef;
+
+		((t_point*)map->content)->iso_y = (((t_point*)map->content)->new_z
+		+ ((((t_point*)map->content)->new_x + ((t_point*)map->content)->new_y)) * CSTE / 2 ) * data->coef;
+		
 		data->min_iso_y > ((t_point*)map->content)->iso_y
 		? data->min_iso_y = ((t_point*)map->content)->iso_y : 0;
+		
 		data->max_iso_y < ((t_point*)map->content)->iso_y
 		? data->max_iso_y = ((t_point*)map->content)->iso_y : 0;
+		
 		map = map->next;
 	}
 }
@@ -64,10 +67,12 @@ void				ft_parallel(t_data *data)
 	data->max_p_y = 0;
 	while (map)
 	{
-		((t_point*)map->content)->p_x = ((t_point*)map->content)->new_x *
-		data->coef;
+		((t_point*)map->content)->p_x = (((t_point*)map->content)->new_x +
+		((t_point*)map->content)->new_z * CSTE) * data->coef;
+
 		((t_point*)map->content)->p_y = (((t_point*)map->content)->new_y
-		- ((t_point*)map->content)->new_z) * data->coef;
+		- ((t_point*)map->content)->new_z * CSTE / 2) * data->coef;
+		
 		data->min_p_y > ((t_point*)map->content)->p_y
 		? data->min_p_y = ((t_point*)map->content)->p_y : 0;
 		data->max_p_y < ((t_point*)map->content)->p_y
